@@ -1,0 +1,41 @@
+/* Styling for User Profile */
+.profile-content-holder {
+	display: flex;
+	justify-content: center;
+    align-content: center;
+	margin-top: 25px;
+    align-items: center;
+}
+.user-profile-img-holder {
+	width: 140px !important;
+	height: 140px !important;
+}
+.user-profile-img-holder img{
+    width: 140px !important;
+    height: 140px !important;
+}
+
+.profile-extra-info-holder {
+    padding-left: 35px;
+font-size: 18px;
+color: #000;
+}
+
+.displayNone {
+	display: none;
+}
+
+.displayBlock {
+	display: block;
+}
+
+.error {
+	color: red;
+}
+
+.row {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center
+}
