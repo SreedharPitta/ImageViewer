@@ -1,23 +1,28 @@
-.app-logo{
-    color: #fff;
-    font-size: 18px;
-    padding: 0px 10px;
-    cursor: pointer;
+/* Header CSS */
+.app-logo {
+	color: #fff;
+	font-size: 18px;
+	padding: 0px 10px;
+	cursor: pointer;
 }
-.search-input{
-    width: 100%;
+
+.search-input {
+	width: 100%;
 }
+
 .displayNone {
-    display: none;
+	display: none;
 }
 
 .displayBlock {
-    display: block;
+	display: block;
 }
-.menu-item-separator{
-    margin-left: 10px;
-    margin-right: 10px;
+
+.menu-item-separator {
+	margin-left: 10px;
+	margin-right: 10px;
 }
-.MuiMenu-list{
-    background-color: #c0c0c0;
+
+.MuiMenu-list {
+	background-color: #c0c0c0;
 }

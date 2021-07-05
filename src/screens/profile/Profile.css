@@ -2,23 +2,25 @@
 .profile-content-holder {
 	display: flex;
 	justify-content: center;
-    align-content: center;
+	align-content: center;
 	margin-top: 25px;
-    align-items: center;
+	align-items: center;
 }
+
 .user-profile-img-holder {
 	width: 140px !important;
 	height: 140px !important;
 }
-.user-profile-img-holder img{
-    width: 140px !important;
-    height: 140px !important;
+
+.user-profile-img-holder img {
+	width: 140px !important;
+	height: 140px !important;
 }
 
 .profile-extra-info-holder {
-    padding-left: 35px;
-font-size: 18px;
-color: #000;
+	padding-left: 35px;
+	font-size: 18px;
+	color: #000;
 }
 
 .displayNone {
@@ -32,10 +34,11 @@ color: #000;
 .error {
 	color: red;
 }
+
 .postInfoRow {
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
 	align-items: center;
-	margin-left : 6px;
+	margin-left: 6px;
 }
