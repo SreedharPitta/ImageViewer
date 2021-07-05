@@ -33,9 +33,10 @@ class Login extends Component {
     inputPasswordChangeHandler = (e) => {
         this.setState({ password: e.target.value });
     };
-    
+
     //This is for Login Submit
     loginClickHandler = (e) => {
+        e.preventDefault();
         let username = "sreedhar";
         let password = "sreedhar123";
         let accessToken = "IGQVJXNVVxNFN6YUkzNWxuRXBqT3d0YWlSLXdlVzV5a25BNXc1TE9PVUpycERHQ3pPd0pITTFPTnI4YlJKeF9jbGpYVGdDMkMwQ2tyZAjhLODk5NGwzbmtDa0hlYVBkdEdTTkJQaVlBdlp1U2xRenRZASFY0di16STlYR3lF";
@@ -60,7 +61,6 @@ class Login extends Component {
                 this.setState({ usernamePasswordIncorrect: "displayBlock" });
             }
         }
-        e.preventDefault();
     }
 
     render() {
