@@ -5,7 +5,7 @@ import Header from "../../common/header/Header";
 class Profile extends Component{
     render(){
         return(
-            <Header title ="Image Viewer" />
+            <Header title="Image Viewer" showPageMenuItems="profile" history = {this.props.history} />
         )
     }
 }
