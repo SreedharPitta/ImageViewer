@@ -18,16 +18,16 @@ const styles = theme => ({
         margin: '10px auto',
     },
     gridListHolder: {
-        width: 1150,
+        width: 1200,
         height: 'auto',
         overflowY: 'auto',
         justifyContent : 'flex-start',
-        marginLeft : '8% !important',
+        marginLeft : '10% !important',
     },
 });
 
 const gridListTileStyle = {
-    width: "495px",
+    width: "500px",
     margin: "10px",
 };
 

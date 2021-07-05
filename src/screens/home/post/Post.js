@@ -46,11 +46,6 @@ const styles = theme => ({
     }
 })
 
-const postCardStyle = {
-    width: "60%",
-    height: "100%",
-};
-
 const postStyle = {
     hashtagStyle: {
         display: "inline",
@@ -145,7 +140,7 @@ class Post extends Component {
         });
         return (
             <div>
-                <Card style={{ postCardStyle }} variant="outlined">
+                <Card variant="outlined">
                     <CardHeader
                         avatar={
                             <Avatar aria-label="recipe" style={{ cursor: 'pointer' }} src={userLogo}></Avatar>
