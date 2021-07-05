@@ -1,8 +1,22 @@
-.app-header{
-    padding: 20px 10px;
-    background-color: #263238;
-}
 .app-logo{
     color: #fff;
     font-size: 18px;
+    padding: 0px 10px;
+}
+.search-input{
+    width: 100%;
+}
+.displayNone {
+    display: none;
+}
+
+.displayBlock {
+    display: block;
+}
+.menu-item-separator{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.MuiMenu-list{
+    background-color: #c0c0c0;
 }
