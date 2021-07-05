@@ -70,7 +70,7 @@ const postStyle = {
 
 const commentsStyle = {
     commentButtonStyle: {
-        marginTop: "12px",
+        marginTop: "15px",
         marginLeft: "12px"
     },
 };
@@ -172,7 +172,7 @@ class Post extends Component {
                                 {!this.state.isLiked && <FavoriteIconBorder />}
                             </IconButton>
                             <Typography>
-                                {this.state.likesCount} <span className="likesText">likes</span>
+                            <span className="likes-text">{this.state.likesCount} likes</span>
                             </Typography>
                         </CardActions>
                         {/* The the User Name is constant as only single user can comment */}
