@@ -36,7 +36,7 @@ class Login extends Component {
     loginClickHandler = () => {
         let username = "sreedhar";
         let password = "sreedhar123";
-        let accessToken = "IGQVJWRU5nV0xsUUJEc25QQ05qUDA0a1BvTk4tY2VIdjVGRkpheGM5aGc2SjIySTE5RW9oMHUxblNCSV9icmZABU3FUaEc3cVItdGE5LWZAMdjN6bkxuRHI3eDZAoQWVoZAkw3Qm5HZAEd1Q3JJT0V3OXlXOEphNmlCMFJ1d0hn";
+        let accessToken = "IGQVJYSkpuSzg5aG9UeHh3Qm1KSW91VWprTFVYYnNGaGhxeDhXcWI3TGUxaDVOZAUFxU2RLaUd5el9RcC1yS05CV0RhZAW1Fa2NpcTVUNElKdWkyQ2tkOHcxVzJxVHY0Tzhwa3hUdWJsbjFQZAS1YVENQbnpIVEJOZAUhOSXJv";
 
         //This will set display of earlier errors to none
         this.setState({ usernamePasswordIncorrect: "displayNone" });
@@ -63,7 +63,7 @@ class Login extends Component {
     render() {
         return (
             <div>
-                <Header title="Image Viewer" />
+                <Header title="Image Viewer" history = {this.props.history} />
                 <div className="login-card-container">
                     <Card variant="outlined" className="login-card">
                         <CardContent className="login-card-content">

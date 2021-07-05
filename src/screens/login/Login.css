@@ -31,13 +31,6 @@ box-shadow: 0px 1px 1px #e2e2e1;
     margin: 15px 0px !important;
     cursor: pointer;
 }
-.displayNone {
-    display: none;
-}
-
-.displayBlock {
-    display: block;
-}
 .error {
     color:red;
 }
