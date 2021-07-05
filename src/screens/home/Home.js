@@ -100,7 +100,7 @@ class Home extends Component {
             // }
             let searchedPosts = []
             //Filter Post By Caption
-            if(userPosts !==undefined &&  userPosts.length > 0) {
+            if (userPosts !== undefined && userPosts.length > 0) {
                 userPosts = userPosts.filter((post) => {
                     if (post.caption !== undefined) {
                         let caption = post.caption.toLowerCase();
@@ -113,36 +113,36 @@ class Home extends Component {
                         }
                     }
                 })
+            }
+            this.setState({
+                userPostIds: userPosts
+            })
+            postDetails = postDetails.filter(item => searchedPosts.includes(item.id));
         }
         this.setState({
-            userPostIds: userPosts
+            userPostDetails: postDetails
         })
-        postDetails = postDetails.filter(item => searchedPosts.includes(item.id));
-    }
-        this.setState({
-        userPostDetails: postDetails
-    })
     };
-render() {
-    const { classes } = this.props;
-    return (
-        <div>
-            <Header title="Image Viewer" showPageMenuItems="home" history={this.props.history} postSearchHandler={this.postSearchHandler} />
-            <div className="cardHolder">
-                <br />
-                <div className={classes.gridHolder}>
-                    <GridList cellHeight={'auto'} cols={2} className={classes.gridListHolder}>
-                        {this.state.userPostDetails.map((item, index) => (
-                            <GridListTile key={item.id} style={gridListTileStyle} cols={item.cols || 1}>
-                                <Post postDetail={item} postIds={this.state.userPostIds} />
-                            </GridListTile>
-                        ))}
-                    </GridList>
+    render() {
+        const { classes } = this.props;
+        return (
+            <div>
+                <Header title="Image Viewer" showPageMenuItems="home" history={this.props.history} postSearchHandler={this.postSearchHandler} />
+                <div className="cardHolder">
+                    <br />
+                    <div className={classes.gridHolder}>
+                        <GridList cellHeight={'auto'} cols={2} className={classes.gridListHolder}>
+                            {this.state.userPostDetails.map((item, index) => (
+                                <GridListTile key={item.id} style={gridListTileStyle} cols={item.cols || 1}>
+                                    <Post postDetail={item} postIds={this.state.userPostIds} />
+                                </GridListTile>
+                            ))}
+                        </GridList>
+                    </div>
                 </div>
             </div>
-        </div>
-    )
-}
+        )
+    }
 
 }
 export default withStyles(styles)(Home);

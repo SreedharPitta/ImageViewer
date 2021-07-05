@@ -91,7 +91,7 @@ class Header extends Component {
     constructor() {
         super();
         this.state = {
-            loggedIn: sessionStorage.getItem("access-token") == null ? false : true,
+            loggedIn: sessionStorage.getItem("access-token") === null ? false : true,
             isMenuOpen: false,
             headerMenudisplay: sessionStorage.getItem("access-token") == null ? "displayNone" : "displayBlock",
             anchorEl: null

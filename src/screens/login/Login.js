@@ -21,7 +21,7 @@ class Login extends Component {
             passwordRequired: "displayNone",
             username: "",
             password: "",
-            loggedIn: sessionStorage.getItem("access-token") == null ? false : true
+            loggedIn: sessionStorage.getItem("access-token") === null ? false : true
         }
     }
     /* To Handel Input User Name Change */
@@ -63,7 +63,7 @@ class Login extends Component {
     render() {
         return (
             <div>
-                <Header title="Image Viewer" history = {this.props.history} />
+                <Header title="Image Viewer" history={this.props.history} />
                 <div className="login-card-container">
                     <Card variant="outlined" className="login-card">
                         <CardContent className="login-card-content">
