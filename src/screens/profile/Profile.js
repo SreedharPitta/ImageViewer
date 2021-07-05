@@ -110,7 +110,7 @@ const styles = {
     },
     viewedPostHashTag: {
         color: '#1c8dd0',
-        marginLeft: '5px',
+        marginLeft: '6px',
         marginTop: '2px',
     },
     viewedPostCommentsInfoHolder: {
@@ -405,11 +405,11 @@ class Profile extends Component {
                                         </Typography>
                                         {this.state.userComments.hasOwnProperty(this.state.viewedPostId.id) && this.state.userComments[this.state.viewedPostId.id].map((comment, index) => {
                                             return (
-                                                <div key={index} className="row" style={{ paddingTop: '12px' }}>
-                                                    <Typography component="p" style={{ fontWeight: 'bold' }}>
+                                                <div key={index} className="postInfoRow" style={{ paddingTop: '12px'}}>
+                                                    <Typography component="p" style={{ fontWeight: '600', fontSize : '16px'}}>
                                                         {this.state.userPostDetails !== undefined && this.state.userPostDetails.length > 0 ? this.state.userPostDetails[0].username : this.state.username}:
                                                     </Typography>
-                                                    <Typography component="p" className={classes.viewedPostComment}>
+                                                    <Typography component="p" className={classes.viewedPostComment} style={{fontWeight: '400', fontSize : '18px'}}>
                                                         {comment}
                                                     </Typography>
                                                 </div>
@@ -417,15 +417,15 @@ class Profile extends Component {
                                         })}
                                     </div>
                                     <div>
-                                        <div className="row">
+                                        <div className="postInfoRow">
                                             <IconButton aria-label="Add to favorites" onClick={this.postLikeClickHandler.bind(this, this.state.viewedPostId.id)} className={classes.viewedPostLikeInfo}>
                                                 {this.state.isLiked ? <FavoriteIconFill style={{ color: 'red' }} /> : <FavoriteIconBorder />}
                                             </IconButton>
-                                            <Typography component="p" style={{ fontWeight: 'bold', fontSize : '15px' }}>
+                                            <Typography component="p" style={{ fontWeight: 'bold', fontSize : '16px' }}>
                                             <span className="likes-text">{likeCount} likes</span>
                                             </Typography>
                                         </div>
-                                        <div className="row">
+                                        <div className="postInfoRow">
                                             <FormControl style={{ flexGrow: 1 }}>
                                                 <InputLabel htmlFor="comment">Add a comment</InputLabel>
                                                 <Input id="comment" value={this.state.postComment} onChange={this.commentChangeHandler} />
