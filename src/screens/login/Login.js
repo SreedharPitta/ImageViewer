@@ -50,7 +50,7 @@ class Login extends Component {
 
         //To validate entered User Name and Password
         if (this.state.username === username && this.state.password === password) {
-            window.sessionStorage.setItem("access-token",accessToken);
+            window.sessionStorage.setItem("access-token", accessToken);
             this.props.history.push('/home');
         } else {
             //In case both user name and password entered but are invalid

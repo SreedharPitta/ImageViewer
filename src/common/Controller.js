@@ -8,9 +8,6 @@ class Controller extends Component {
 
   constructor() {
     super();
-    this.state = {
-      loggedIn: sessionStorage.getItem("access-token") === null ? false : true
-    }
     this.baseUrl = "https://graph.instagram.com/";
   }
   render() {
@@ -18,8 +15,8 @@ class Controller extends Component {
       <Router>
         <div>
           <Route exact path='/' render={(props) => (<Login {...props} baseUrl={this.baseUrl} />)} />
-          <Route path='/home' render={(props) => this.state.loggedIn ? (<Home {...props} baseUrl={this.baseUrl} />) : (<Redirect to='/' />)} />
-          <Route path='/profile' render={(props) => this.state.loggedIn ? (<Profile {...props} baseUrl={this.baseUrl} />) : (<Redirect to='/' />)} />
+          <Route path='/home' render={(props) => (<Home {...props} baseUrl={this.baseUrl} />)} />
+          <Route path='/profile' render={(props) => (<Profile {...props} baseUrl={this.baseUrl} />)} />
         </div>
       </Router>
     )

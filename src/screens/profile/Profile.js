@@ -196,20 +196,22 @@ class Profile extends Component {
 
     //API Call 1 to Fetch Post Ids
     componentWillMount() {
-        let data = null;
-        let xhr = new XMLHttpRequest();
-        let thisRef = this;
-        xhr.addEventListener('readystatechange', function () {
-            if (this.readyState === 4) {
-                let responseData = JSON.parse(this.responseText).data;
-                thisRef.setState({
-                    userPostIds: responseData
-                });
-                thisRef.getUserPostsDetailedInfo();
-            }
-        });
-        xhr.open("GET", this.props.baseUrl + "me/media?fields=id,caption&access_token=" + sessionStorage.getItem('access-token'));
-        xhr.send(data)
+        if (sessionStorage.getItem('access-token') !== null) {
+            let data = null;
+            let xhr = new XMLHttpRequest();
+            let thisRef = this;
+            xhr.addEventListener('readystatechange', function () {
+                if (this.readyState === 4) {
+                    let responseData = JSON.parse(this.responseText).data;
+                    thisRef.setState({
+                        userPostIds: responseData
+                    });
+                    thisRef.getUserPostsDetailedInfo();
+                }
+            });
+            xhr.open("GET", this.props.baseUrl + "me/media?fields=id,caption&access_token=" + sessionStorage.getItem('access-token'));
+            xhr.send(data)
+        }
     }
 
     //This is to get all Posts Info
@@ -308,6 +310,9 @@ class Profile extends Component {
     render() {
         const { classes } = this.props;
         let likeCount = this.state.likesCount;
+        if (sessionStorage.getItem('access-token') === null) {
+            this.props.history.push('/');
+        }
         return (
             <div>
                 <Header title="Image Viewer" showPageMenuItems="profile" history={this.props.history} />

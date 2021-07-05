@@ -44,21 +44,23 @@ class Home extends Component {
 
     //API Call 1 to Fetch Post Ids
     componentWillMount() {
-        let data = null;
-        let xhr = new XMLHttpRequest();
-        let thisRef = this;
-        xhr.addEventListener('readystatechange', function () {
-            if (this.readyState === 4) {
-                let responseData = JSON.parse(this.responseText).data;
-                thisRef.setState({
-                    userPostIds: responseData,
-                    userPostIdsCopy: responseData
-                });
-                thisRef.getUserPostsDetailedInfo();
-            }
-        });
-        xhr.open("GET", this.props.baseUrl + "me/media?fields=id,caption&access_token=" + sessionStorage.getItem('access-token'));
-        xhr.send(data)
+        if (sessionStorage.getItem('access-token') !== null) {
+            let data = null;
+            let xhr = new XMLHttpRequest();
+            let thisRef = this;
+            xhr.addEventListener('readystatechange', function () {
+                if (this.readyState === 4) {
+                    let responseData = JSON.parse(this.responseText).data;
+                    thisRef.setState({
+                        userPostIds: responseData,
+                        userPostIdsCopy: responseData
+                    });
+                    thisRef.getUserPostsDetailedInfo();
+                }
+            });
+            xhr.open("GET", this.props.baseUrl + "me/media?fields=id,caption&access_token=" + sessionStorage.getItem('access-token'));
+            xhr.send(data)
+        }
     }
 
     //This is to get all Posts Info
@@ -126,6 +128,9 @@ class Home extends Component {
     };
     render() {
         const { classes } = this.props;
+        if (sessionStorage.getItem('access-token') === null) {
+            this.props.history.push('/');
+        }
         return (
             <div>
                 <Header title="Image Viewer" showPageMenuItems="home" history={this.props.history} postSearchHandler={this.postSearchHandler} />
