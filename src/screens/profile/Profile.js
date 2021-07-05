@@ -55,51 +55,81 @@ const styles = {
     buttonControl: {
         marginTop: '20px',
     },
-    postsDisplayHolder : {
-        margin : '10px auto',
+    postsDisplayHolder: {
+        margin: '10px auto',
     },
-    postsGridListHolder : {
-        margin : '0px auto !important',
-        padding : '40px 100px',
+    postsGridListHolder: {
+        margin: '0px auto !important',
+        padding: '40px 100px',
+        justifyContent: 'flex-start',
     },
     postMedia: {
         height: '350px',
         cursor: 'pointer'
     },
-    openedImageObjModal: {
+    viewedPostModal: {
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+
     },
-    openedImageObjContainer: {
+    viewedPostInfoHolder: {
         display: 'flex',
         flexDirection: 'row',
         backgroundColor: "#fff",
-        width: '70%',
-        height: '70%'
+        width: '75%',
+        height: '65%'
     },
-    openedImageObjContainerRow1: {
+    viewedPostInfoImageHolder: {
         width: '50%',
-        padding: 10
+        padding: '15px'
     },
-    openedImageObjContainerRow2: {
+    viewedPostInfoContentHolder: {
         display: 'flex',
         flexDirection: 'column',
         width: '50%',
-        padding: 10
+        padding: '15px'
     },
-    openedImageObjContainerRow21: {
-        borderBottom: '2px solid #c0c0c0',
+    viewedPostAvatar: {
+        cursor: 'pointer',
+        width: '60px',
+        height: '60px',
+        margin: '0px 10px 10px',
+    },
+    viewedPostProfileInfoHolder: {
+        borderBottom: '1px solid #c0c0c0',
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'flex-start',
         alignItems: 'center'
     },
-    openedImageObjContainerRow22: {
+    viewedPostCaption: {
+        fontWeight: 'bold',
+        marginLeft: '6px',
+        paddingTop: '8px'
+    },
+    viewedPostHashTag: {
+        color: '#1c8dd0',
+        marginLeft: '5px',
+        marginTop: '2px',
+    },
+    viewedPostCommentsInfoHolder: {
         display: 'flex',
         height: '100%',
         flexDirection: 'column',
         justifyContent: 'space-between'
+    },
+    viewedPostComment: {
+        marginLeft: '6px',
+        fontWeight: 'bold'
+    },
+    viewedPostLikeInfo: {
+        padding: '0px',
+        fontWeight: '600'
+    },
+    viewedPostsButtonControl : {
+        marginTop : '8px',
+        marginLeft : '8px',
     }
 };
 
@@ -123,7 +153,7 @@ class Profile extends Component {
             viewedPostId: null,
             viewedPostDetail: null,
             userComments: {},
-            comment: '',
+            postComment: '',
         }
     }
 
@@ -211,21 +241,22 @@ class Profile extends Component {
 
     //This is for Opening Post Modal on Clicking on it
     postInfoOpenModalHandler = (e) => {
-        console.log("Called Post Modal Event");
         var userPostId = this.state.userPostIds.find(item => {
             return item.id === e.target.id
         })
-        console.log("Opened Post Id:" + userPostId)
         var postDetails = this.state.userPostDetails.find(item => {
             return item.id === e.target.id
         })
-        console.log("Opened Post Detail" + postDetails)
         this.setState({ isPostInfoModalOpen: true, viewedPostId: userPostId, viewedPostDetail: postDetails });
     }
 
     //For Closing the Modal which has been opened
     closePostModalHandler = () => {
-        this.setState({ isPostInfoModalOpen: false });
+        this.setState({
+            isPostInfoModalOpen: false,
+            isLiked: false,
+            likesCount: Math.floor(Math.random() * 10) + 1
+        });
     }
 
     postLikeClickHandler = (id) => {
@@ -347,38 +378,38 @@ class Profile extends Component {
                         aria-describedby="Post Information Modal"
                         open={this.state.isPostInfoModalOpen}
                         onClose={this.closePostModalHandler}
-                        className={classes.openedImageObjModal}>
-                        <div className={classes.openedImageObjContainer}>
-                            <div className={classes.openedImageObjContainerRow1}>
+                        className={classes.viewedPostModal}>
+                        <div className={classes.viewedPostInfoHolder}>
+                            <div className={classes.viewedPostInfoImageHolder}>
                                 <img style={{ cursor: 'pointer', height: '100%', width: '100%' }}
                                     src={this.state.viewedPostDetail.media_url}
                                     alt={this.state.viewedPostId.caption} />
                             </div>
-                            <div className={classes.openedImageObjContainerRow2}>
-                                <div className={classes.openedImageObjContainerRow21}>
+                            <div className={classes.viewedPostInfoContentHolder}>
+                                <div className={classes.viewedPostProfileInfoHolder}>
                                     <Avatar
                                         alt="User Image"
                                         src={userLogo}
-                                        style={{ cursor: 'pointer', width: "50px", height: "50px", margin: '10px' }} />
-                                    <Typography component="p" style={{ fontWeight: 'bold' }}>
-                                        {this.state.user}
+                                        className={classes.viewedPostAvatar} />
+                                    <Typography component="p" style={{ fontWeight: '500', fontSize: '18px' }}>
+                                        {this.state.userPostDetails !== undefined && this.state.userPostDetails.length > 0 ? this.state.userPostDetails[0].username : this.state.username}
                                     </Typography>
                                 </div>
-                                <div className={classes.openedImageObjContainerRow22}>
+                                <div className={classes.viewedPostCommentsInfoHolder}>
                                     <div>
-                                        <Typography component="p" style={{ fontWeight: 'bold', marginLeft: '5px', paddingTop: '8px' }}>
+                                        <Typography component="p" className={classes.viewedPostCaption}>
                                             {this.state.viewedPostId.caption}
                                         </Typography>
-                                        <Typography style={{ color: '#4dabf5', marginLeft: '5px' }} component="p" >
-                                            #Coding #Skills #Passion
+                                        <Typography component="p" className={classes.viewedPostHashTag} >
+                                            #Upgrad #Test #IgPost #React
                                         </Typography>
                                         {this.state.userComments.hasOwnProperty(this.state.viewedPostId.id) && this.state.userComments[this.state.viewedPostId.id].map((comment, index) => {
                                             return (
                                                 <div key={index} className="row" style={{ paddingTop: '12px' }}>
                                                     <Typography component="p" style={{ fontWeight: 'bold' }}>
-                                                        {this.state.user}:
+                                                        {this.state.userPostDetails !== undefined && this.state.userPostDetails.length > 0 ? this.state.userPostDetails[0].username : this.state.username}:
                                                     </Typography>
-                                                    <Typography component="p" style={{ marginLeft: '6px', fontWeight: 'bold' }}>
+                                                    <Typography component="p" className={classes.viewedPostComment}>
                                                         {comment}
                                                     </Typography>
                                                 </div>
@@ -387,20 +418,19 @@ class Profile extends Component {
                                     </div>
                                     <div>
                                         <div className="row">
-                                            <IconButton aria-label="Add to favorites" onClick={this.postLikeClickHandler.bind(this, this.state.viewedPostId.id)}>
-                                                {this.state.isLiked && <FavoriteIconFill style={{ color: '#F44336' }} />}
-                                                {!this.state.isLiked && <FavoriteIconBorder />}
+                                            <IconButton aria-label="Add to favorites" onClick={this.postLikeClickHandler.bind(this, this.state.viewedPostId.id)} className={classes.viewedPostLikeInfo}>
+                                                {this.state.isLiked ? <FavoriteIconFill style={{ color: 'red' }} /> : <FavoriteIconBorder />}
                                             </IconButton>
-                                            <Typography component="p" style={{ fontWeight: 'bold' }}>
-                                                {likeCount} likes
+                                            <Typography component="p" style={{ fontWeight: 'bold', fontSize : '15px' }}>
+                                            <span className="likes-text">{likeCount} likes</span>
                                             </Typography>
                                         </div>
                                         <div className="row">
                                             <FormControl style={{ flexGrow: 1 }}>
                                                 <InputLabel htmlFor="comment">Add a comment</InputLabel>
-                                                <Input id="comment" value={this.state.currentComment} onChange={this.commentChangeHandler} />
+                                                <Input id="comment" value={this.state.postComment} onChange={this.commentChangeHandler} />
                                             </FormControl>
-                                            <FormControl>
+                                            <FormControl className={classes.viewedPostsButtonControl}>
                                                 <Button onClick={this.addUserCommentHandler.bind(this, this.state.viewedPostId.id)}
                                                     variant="contained" color="primary">
                                                     ADD

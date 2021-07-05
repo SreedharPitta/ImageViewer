@@ -1,4 +1,10 @@
 /* Styling for User Profile */
+.row {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center
+}
 .profile-content-holder {
 	display: flex;
 	justify-content: center;
@@ -31,11 +37,4 @@ color: #000;
 
 .error {
 	color: red;
-}
-
-.row {
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-start;
-	align-items: center
 }
