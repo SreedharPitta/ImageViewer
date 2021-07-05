@@ -2,6 +2,7 @@
     color: #fff;
     font-size: 18px;
     padding: 0px 10px;
+    cursor: pointer;
 }
 .search-input{
     width: 100%;

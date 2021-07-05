@@ -78,10 +78,15 @@ class Header extends Component {
             isMenuOpen: true
         });
     }
+    //This is for closing menu
     closeMenuHandler = (e) => {
         this.setState({
             isMenuOpen: false
         });
+    }
+    //This is for Logo Click Handler
+    logoClickHandler = () => {
+        this.state.loggedIn ? this.props.history.push("/home") : this.props.history.push("/");
     }
     constructor() {
         super();
@@ -97,10 +102,9 @@ class Header extends Component {
         return (
             <div className={classes.appheader}>
                 <div>
-                    <span className="app-logo">{this.props.title}</span>
+                    <span className="app-logo" onClick={this.logoClickHandler}>{this.props.title}</span>
                 </div>
                 {this.props.showPageMenuItems === "home" && (
-
                     <div className={classes.headerHomeRight}>
                         <div className={classes.search}>
                             <div className={classes.searchIcon}><SearchIcon /></div>
