@@ -39,7 +39,7 @@ class Login extends Component {
         e.preventDefault();
         let username = "sreedhar";
         let password = "sreedhar123";
-        let accessToken = "IGQVJXNVVxNFN6YUkzNWxuRXBqT3d0YWlSLXdlVzV5a25BNXc1TE9PVUpycERHQ3pPd0pITTFPTnI4YlJKeF9jbGpYVGdDMkMwQ2tyZAjhLODk5NGwzbmtDa0hlYVBkdEdTTkJQaVlBdlp1U2xRenRZASFY0di16STlYR3lF";
+        let accessToken = "IGQVJYWnpzOHZAhN1RtQWlpeVMxSWtOY1VrX3owQVV2QU9pSGxuLWhQaGlWUTgySEJRcXp3d3BVX0RtaHd1RWZA6MXlFeE9BWFhGaWMwX2lQT0xRTWU3YU5oaEt1VTFjOWc2bnlrNGNOaE1UQ3F5aFRLT3ZAtTTNHOG5raHI0";
 
         //This will set display of earlier errors to none
         this.setState({ usernamePasswordIncorrect: "displayNone" });
@@ -50,10 +50,7 @@ class Login extends Component {
 
         //To validate entered User Name and Password
         if (this.state.username === username && this.state.password === password) {
-            window.sessionStorage.setItem(
-                "access-token",
-                accessToken
-            );
+            window.sessionStorage.setItem("access-token",accessToken);
             this.props.history.push('/home');
         } else {
             //In case both user name and password entered but are invalid

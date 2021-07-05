@@ -43,7 +43,7 @@ class Home extends Component {
     }
 
     //API Call 1 to Fetch Post Ids
-    UNSAFE_componentWillMount() {
+    componentWillMount() {
         let data = null;
         let xhr = new XMLHttpRequest();
         let thisRef = this;
