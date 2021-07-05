@@ -19,7 +19,6 @@ import Button from '@material-ui/core/Button';
 import Fab from '@material-ui/core/Fab';
 import EditIcon from '@material-ui/icons/Edit';
 import Modal from '@material-ui/core/Modal';
-import { auto } from 'async';
 
 const styles = {
     userNameInfo: {

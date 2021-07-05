@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import './Home.css';
 import Header from "../../common/header/Header";
-import { Grid } from "@material-ui/core";
 import { GridList } from "@material-ui/core";
 import { GridListTile } from "@material-ui/core";
 import { withStyles } from "@material-ui/styles";
@@ -111,6 +110,8 @@ class Home extends Component {
                         } else {
                             return false;
                         }
+                    } else {
+                        return false;
                     }
                 })
             }
