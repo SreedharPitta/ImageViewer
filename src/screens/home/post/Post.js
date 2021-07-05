@@ -38,7 +38,7 @@ const styles = theme => ({
         backgroundColor: '#c0c0c0',
     },
     postLikeInfo : {
-        padding: '0px 10px',
+        padding: '0px',
         fontWeight : '600'
     },
     cardActionHolder: {
@@ -172,7 +172,7 @@ class Post extends Component {
                                 {!this.state.isLiked && <FavoriteIconBorder />}
                             </IconButton>
                             <Typography>
-                                {this.state.likesCount} likes
+                                {this.state.likesCount} <span className="likesText">likes</span>
                             </Typography>
                         </CardActions>
                         {/* The the User Name is constant as only single user can comment */}

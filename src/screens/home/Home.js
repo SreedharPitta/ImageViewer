@@ -47,15 +47,15 @@ class Home extends Component {
     UNSAFE_componentWillMount() {
         let data = null;
         let xhr = new XMLHttpRequest();
-        let that = this;
+        let thisRef = this;
         xhr.addEventListener('readystatechange', function () {
             if (this.readyState === 4) {
                 let responseData = JSON.parse(this.responseText).data;
-                that.setState({
+                thisRef.setState({
                     userPostIds: responseData,
                     userPostIdsCopy: responseData
                 });
-                that.getUserPostsDetailedInfo();
+                thisRef.getUserPostsDetailedInfo();
             }
         });
         xhr.open("GET", this.props.baseUrl + "me/media?fields=id,caption&access_token=" + sessionStorage.getItem('access-token'));
@@ -71,15 +71,15 @@ class Home extends Component {
 
     //API Call 2 to Fetch detailed Post Info
     getUserPostDetailedInfoById = (id) => {
-        let that = this
+        let thisRef = this
         let xhr = new XMLHttpRequest();
         let data = null
         xhr.addEventListener('readystatechange', function () {
             if (this.readyState === 4) {
                 let responseData = JSON.parse(this.responseText);
-                that.setState({
-                    userPostDetails: that.state.userPostDetails.concat(responseData),
-                    userPostDetailsCopy: that.state.userPostDetailsCopy.concat(responseData)
+                thisRef.setState({
+                    userPostDetails: thisRef.state.userPostDetails.concat(responseData),
+                    userPostDetailsCopy: thisRef.state.userPostDetailsCopy.concat(responseData)
                 });
             }
         });
